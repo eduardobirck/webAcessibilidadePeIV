@@ -1,21 +1,78 @@
 const express = require('express');
 const cors = require('cors');
-const path = require('path');
+const dotenv = require('dotenv');
+const mongoose = require('mongoose');
 
+
+// Carregar as variáveis de ambiente do arquivo .env
+dotenv.config();
+
+// Criar uma instância do Express
 const app = express();
+
+const corsOptions = {
+  origin: 'http://localhost:5173', // Defina o URL do seu frontend
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Permitir os métodos necessários
+  allowedHeaders: ['Content-Type'], // Permitir o cabeçalho Content-Type
+};
+
+app.use(cors(corsOptions)); // Este deve ser o primeiro middleware
+app.use(express.json()); // Middleware para parsear o JSON
+
+// Conectar ao MongoDB
+const connectDB = async () => {
+    try {
+      // A conexão com o MongoDB é feita sem a opção deprecated
+      await mongoose.connect(process.env.MONGO_URI);
+      console.log('MongoDB conectado');
+    } catch (error) {
+      console.error('Erro ao conectar ao MongoDB', error);
+      process.exit(1); // Encerra o processo em caso de erro
+    }
+  };
+  
+  connectDB();
+
+// Definir o modelo de usuário
+const UserSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+});
+
+const User = mongoose.model('User', UserSchema);
+
+// Rota para criar um novo usuário
+app.post('/api/users', async (req, res) => {
+  try {
+    console.log('Dados recebidos:', req.body);
+
+    const { name, email, password } = req.body;
+    const newUser = new User({ name, email, password });
+    await newUser.save();
+    res.status(201).json(newUser);
+  } catch (error) {
+    res.status(400).json({ message: 'Erro ao criar o usuário', error });
+  }
+});
+
+// Teste de rota básica
+app.get('/', (req, res) => {
+  res.send('Backend conectado ao MongoDB!');
+});
+
+// Iniciar o servidor
 const PORT = process.env.PORT || 3000;
-
-app.use(cors());
-app.use(express.json());
-
-// Serve arquivos do frontend em produção
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, 'dist')));
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, 'dist', 'index.html'));
-    });
-} else {
-    app.get('/', (req, res) => res.send('Backend rodando!'));
-}
-
-app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
+});

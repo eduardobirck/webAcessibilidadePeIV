@@ -1,0 +1,54 @@
+.cadastro-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #eaf4e4; /* Verde claro */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cadastro-container h1 {
+    text-align: center;
+    color: #2e7d32; /* Verde mais escuro */
+  }
+  
+  .message {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #2e7d32;
+    font-weight: bold;
+  }
+  
+  .cadastro-form .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .cadastro-form .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .cadastro-form .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .cadastro-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #2e7d32; /* Verde mais escuro */
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .cadastro-form button:hover {
+    background-color: #1b5e20; /* Verde ainda mais escuro */
+  }
+  
