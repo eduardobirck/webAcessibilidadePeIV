@@ -11,7 +11,10 @@ dotenv.config();
 const app = express();
 
 const corsOptions = {
-  origin: 'http://localhost:5173', // Defina o URL do seu frontend
+  origin: [
+  'http://localhost:5173', 
+  'https://webacessibilidadepeiv-frontend.onrender.com',// Defina o URL do seu frontend
+  ],
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Permitir os métodos necessários
   allowedHeaders: ['Content-Type'], // Permitir o cabeçalho Content-Type
 };
@@ -72,7 +75,7 @@ app.get('/', (req, res) => {
 });
 
 // Iniciar o servidor
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
 });
