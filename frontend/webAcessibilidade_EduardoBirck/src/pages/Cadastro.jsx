@@ -16,7 +16,7 @@ const Cadastro = () => {
     e.preventDefault(); // Previne o comportamento padrão do formulário
 
     try {
-        const response = await axios.post('http://localhost:3000/api/users', formData);
+        const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/users`, formData);
         if (response.status === 201) {
           alert('Usuário cadastrado com sucesso!');
         }
