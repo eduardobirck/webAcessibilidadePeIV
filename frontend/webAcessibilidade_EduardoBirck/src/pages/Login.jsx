@@ -20,7 +20,7 @@ const Login = () => {
 
     try {
       // Faz a requisição GET para validar o login
-      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/users/login`, {
+      const response = await axios.get('https://webacessibilidadepeiv.onrender.com/api/users', {
         params: formData, // Envia os dados do formulário como parâmetros
       });
 
