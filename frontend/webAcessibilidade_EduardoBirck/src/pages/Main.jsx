@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import logo from '../imagens/logo.png';
-import loupeWhite from '../imagens/loupe-white.svg';
 import icons from '../imagens/icons.png';
 
 const Main = () => {
@@ -22,31 +21,13 @@ const Main = () => {
             <img src={logo} alt="Logo da A.D.L.U" className="logo" /> 
             </a>
           </div>
-
-          {/* Menu */}
-          <div className="menu">
-            <a href="#conteudo">Conteúdo</a>
-            <a href="teste.html">Forum</a>
-          </div>
     
             {/* Botões */}
         <div className="botao">
             <button onClick={() => navigate('/Cadastro')}>Cadastre-se</button>
-            <button onClick={() => navigate('/login')}>Login</button>
+            <button onClick={() => navigate('/Login')}>Login</button>
           </div>
           
-
-          {/* Barra de pesquisa */}
-          <div className="pesquisa">
-            <input
-              type="text"
-              className="search-text"
-              placeholder="Pesquisar na ADLU..."
-            />
-            <a href="https://www.nãofunciona.com" className="search-bnt">
-            <img src={loupeWhite} alt="Pesquisar" width="25" height="25" />
-            </a>
-          </div>
         </div>
       </header>
 
@@ -58,7 +39,7 @@ const Main = () => {
 
       {/* Título */}
       <div className="titulo">
-      <img src={icons} alt="A.D.L.U" width="200" />
+      <img src={icons} alt="A.D.L.U" width="250" />
         <h1 id="conteudo">
           Acessibilidade Digital<br /> Tornando a Web Conectada a Todos
         </h1>
@@ -120,7 +101,11 @@ const Main = () => {
         </p>
       </div>
 
-      <footer></footer>
+      <footer>
+        <p>
+          Desenvolvido por: Eduardo Birck.
+        </p>
+      </footer>
     </div>
   );
 };

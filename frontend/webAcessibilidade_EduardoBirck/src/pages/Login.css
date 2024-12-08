@@ -1,0 +1,89 @@
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f9f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Contêiner principal */
+  .login-container {
+    background-color: #e6ffe6;
+    border-radius: 10px;
+    padding: 20px 40px;
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  /* Título */
+  .login-container h1 {
+    color: #228b22;
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  
+  /* Mensagem de erro ou sucesso */
+  .message {
+    margin: 10px 0;
+    color: #d9534f;
+    font-size: 16px;
+  }
+  
+  /* Estilos do formulário */
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  label {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Botões */
+  button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .btn-login {
+    background-color: #228b22;
+    color: #fff;
+  }
+  
+  .btn-login:hover {
+    background-color: #1e7e1e;
+  }
+  
+  .btn-back {
+    background-color: #d9534f;
+    color: #fff;
+  }
+  
+  .btn-back:hover {
+    background-color: #c9302c;
+  }
+  

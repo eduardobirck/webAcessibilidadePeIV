@@ -52,3 +52,16 @@
     background-color: #1b5e20; /* Verde ainda mais escuro */
   }
   
+  .voltar-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .voltar-button:hover {
+    background-color: #d32f2f;
+  }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Cadastro.css';
+import { useNavigate } from 'react-router-dom';
 
 const Cadastro = () => {
   const [formData, setFormData] = useState({ name: '', email: '', password: '' });
@@ -10,6 +11,8 @@ const Cadastro = () => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
+  
+  const navigate = useNavigate();
 
   // Função para enviar os dados para o backend
   const handleSubmit = async (e) => {
@@ -66,7 +69,8 @@ const Cadastro = () => {
         </div>
         <button type="submit">Cadastrar</button>
       </form>
-    </div>
+      <button onClick={() => navigate('/')} className="voltar-button">Voltar</button>
+    </div>    
   );
 };
 

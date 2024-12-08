@@ -67,6 +67,40 @@ app.post('/api/users', async (req, res) => {
   }
 });
 
+// Rota para listar todos os usuários
+app.get("/api/users", async (req, res) => {
+  try {
+    const users = await User.find(); // Busca todos os usuários do banco
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(500).json({ message: "Erro ao buscar usuários", error });
+  }
+});
+
+
+app.get("/api/users/login", async (req, res) => {
+  const { email, password } = req.query; // Captura os parâmetros da query string
+
+  try {
+    // Busca o usuário pelo e-mail
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ message: "Usuário não encontrado" });
+    }
+
+    // Verifica se a senha corresponde
+    if (user.password !== password) {
+      return res.status(401).json({ message: "Senha incorreta" });
+    }
+
+    // Retorna sucesso se as credenciais estiverem corretas
+    res.status(200).json({ message: "Login bem-sucedido", user });
+  } catch (error) {
+    res.status(500).json({ message: "Erro ao validar o login", error });
+  }
+});
+
 // Teste de rota básica
 app.get('/', (req, res) => {
   res.send('Backend conectado ao MongoDB!');
