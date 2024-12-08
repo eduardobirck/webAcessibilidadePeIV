@@ -78,26 +78,21 @@ app.get("/api/users", async (req, res) => {
 });
 
 
-app.get("/api/users/login", async (req, res) => {
-  const { email, password } = req.query; // Captura os parâmetros da query string
+app.get('/api/users/login', async (req, res) => {
+  const { email, password } = req.query; // Usando 'req.query' para capturar parâmetros via URL
 
   try {
-    // Busca o usuário pelo e-mail
-    const user = await User.findOne({ email });
+    // Busca do usuário pelo email
+    const user = await User.findOne({ email: email });
 
-    if (!user) {
-      return res.status(404).json({ message: "Usuário não encontrado" });
+    // Verifica se o usuário existe e se a senha está correta
+    if (user && user.password === password) {
+      return res.status(200).json({ message: "Login realizado com sucesso!", user });
+    } else {
+      return res.status(404).json({ message: "Usuário não encontrado" }); // Caso o usuário não seja encontrado
     }
-
-    // Verifica se a senha corresponde
-    if (user.password !== password) {
-      return res.status(401).json({ message: "Senha incorreta" });
-    }
-
-    // Retorna sucesso se as credenciais estiverem corretas
-    res.status(200).json({ message: "Login bem-sucedido", user });
   } catch (error) {
-    res.status(500).json({ message: "Erro ao validar o login", error });
+    return res.status(500).json({ message: "Erro ao validar login", error });
   }
 });
 
