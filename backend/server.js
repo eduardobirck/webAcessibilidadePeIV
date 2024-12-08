@@ -11,10 +11,8 @@ dotenv.config();
 const app = express();
 
 const corsOptions = {
-  origin: [
-  'http://localhost:5173', 
+  origin: 
   'https://webacessibilidadepeiv-frontend.onrender.com',// Defina o URL do seu frontend
-  ],
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Permitir os métodos necessários
   allowedHeaders: ['Content-Type'], // Permitir o cabeçalho Content-Type
 };
