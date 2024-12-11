@@ -28,7 +28,7 @@ const Login = () => {
       console.log("Usuário logado:", response.data.user);
       
       // Exemplo: Redireciona para a página principal após login
-      navigate("/main");
+      navigate("/");
     } catch (error) {
       if (error.response) {
         setMessage(error.response.data.message); // Mensagem de erro retornada pelo servidor
